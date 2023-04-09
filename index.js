@@ -34,6 +34,13 @@ io.on("connection", (socket) => {
       io.emit("connectedUsers", connectedUsers);
     });
 
+
+    socket.on("getConnectedUsers", (userId, username) => {
+
+      // Send the updated list of connected users to all connected clients
+      io.emit("connectedUsers", connectedUsers);
+    });
+
     // Handle user disconnection
     socket.on("disconnect", () => {
       console.log("User disconnected", socket.id);
